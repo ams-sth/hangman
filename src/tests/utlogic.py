@@ -1,5 +1,5 @@
 import unittest
-from src.hlogic import HangmanLogic
+from src.logic.hlogic import HangmanLogic
 
 class TestHangmanLogic(unittest.TestCase):
 
