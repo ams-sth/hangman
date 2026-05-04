@@ -1,12 +1,24 @@
 import customtkinter as ctk
 
 class MenuScreen(ctk.CTkFrame):
-    def __init__(self, master, on_start):
+    def __init__(self, master, on_start, on_toggle_theme, current_theme):
         super().__init__(master, fg_color="transparent")
         self.on_start = on_start
+        self.on_toggle_theme = on_toggle_theme
+        self.current_theme = current_theme
         self._build()
 
     def _build(self):
+        icon = "☀️" if self.current_theme == "dark" else "🌙"
+        ctk.CTkButton(
+            self,
+            text=icon,
+            width=40, height=40,
+            command=self.on_toggle_theme,
+            fg_color="transparent",
+            hover_color=("gray85", "gray25")
+        ).place(relx=1.0, rely=0.0, anchor="ne", x=-10, y=10)
+
         ctk.CTkLabel(
             self,
             text="Hangman",
