@@ -29,11 +29,19 @@ class MenuScreen(ctk.CTkFrame):
 
         self.level_var = ctk.StringVar(value="basic")
 
-        ctk.CTkOptionMenu(
+        ctk.CTkSegmentedButton(
             self,
-            variable=self.level_var,
             values=["basic", "intermediate"],
-            font=ctk.CTkFont(size=14)
+            variable=self.level_var,
+            font=ctk.CTkFont(size=14, weight="bold"),
+            width=250,
+            height=40,
+            selected_color="#28a745",       
+            selected_hover_color="#218838",
+            unselected_color=("gray80", "gray25"),
+            unselected_hover_color=("gray70", "gray35"),
+            text_color=("black", "white"),
+            corner_radius=20                 
         ).pack(pady=10)
 
         ctk.CTkButton(

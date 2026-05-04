@@ -18,7 +18,8 @@ class HangmanApp:
         self.show_menu()
 
     def toggle_theme(self):
-        self._theme = "light" if self._theme == "dark" else "dark"
+        cycle = {"dark": "light", "light": "system", "system": "dark"}
+        self._theme = cycle[self._theme]
         ctk.set_appearance_mode(self._theme)
 
     def show_menu(self):
