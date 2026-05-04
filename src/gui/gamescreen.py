@@ -1,14 +1,17 @@
 import customtkinter as ctk
 from PIL import Image
 
+from gui.widgets import ThemeToggleButton
 from logic.hlogic import HangmanLogic
 from gui.dialogs import GameDialog
 
 class GameScreen(ctk.CTkFrame):
-    def __init__(self, master, level, on_new_game):
+    def __init__(self, master, level, on_new_game, current_theme, on_toggle_theme):
         super().__init__(master, fg_color="transparent")
         self.level = level
         self.on_new_game = on_new_game
+        self.on_toggle_theme = on_toggle_theme
+        self.current_theme = current_theme
         self.game = HangmanLogic(level=self.level)
         self.time_left = 15
 
@@ -69,6 +72,12 @@ class GameScreen(ctk.CTkFrame):
             text_color=("green", "#7fff7f")
         )
         self.score_label.grid(row=0, column=3, padx=5)
+        
+        ThemeToggleButton(
+            self,
+            current_theme=self.current_theme,
+            on_toggle=self.on_toggle_theme
+        ).place(relx=1.0, rely=0.0, anchor="ne", x=-10, y=10)
 
     def _build_main_area(self):
         main = ctk.CTkFrame(self, fg_color="transparent")

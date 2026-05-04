@@ -31,7 +31,9 @@ class HangmanApp:
         self.current_screen = GameScreen(
             self.master,
             level=level,
-            on_new_game=self.show_menu
+            on_new_game=self.show_menu,
+            current_theme=self._theme,        
+            on_toggle_theme=self.toggle_theme
         )
         self.current_screen.pack(expand=True, fill="both")
 
