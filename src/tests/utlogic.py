@@ -1,10 +1,10 @@
 import unittest
-from src.logic.hlogic import HangmanLogic
+from logic.hlogic import HangmanLogic
 
 class TestHangmanLogic(unittest.TestCase):
 
     def setUp(self):
-        self.dictionary_path = "src/dictionary.txt"
+        self.dictionary_path = "data/dictionary.txt"
         self.game_basic = HangmanLogic(level="basic", dictionary_path=self.dictionary_path)
         self.game_intermediate = HangmanLogic(level="intermediate", dictionary_path=self.dictionary_path)
 
@@ -69,7 +69,3 @@ class TestHangmanLogic(unittest.TestCase):
         letter = self.game_basic.hidden_word[0]
         self.game_basic.guess(letter)
         self.assertEqual(self.game_basic.guess(letter), "already")
-
-if __name__ == "__main__":
-    unittest.main()
-   

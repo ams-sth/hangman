@@ -3,10 +3,13 @@ import string
 import nltk
 from nltk.corpus import brown
 
-nltk.download('brown')
+try:
+    nltk.data.find('corpora/brown')
+except LookupError:
+    nltk.download('brown', quiet=True)
 
 class HangmanLogic:
-    def __init__(self, level="basic", dictionary_path="src/dictionary.txt"):
+    def __init__(self, level="basic", dictionary_path="data/dictionary.txt"):
         try:
             with open(dictionary_path, "r") as f:
                 self.word_list = [line.strip().upper() for line in f if line.strip()]
@@ -23,16 +26,16 @@ class HangmanLogic:
         else:
             self.phrase_list = []
 
+        self.score = 0
         self.reset()
 
     def generate_random_phrases(self):
-        """Generate random phrases from the Brown corpus."""
         phrases = []
         for sentence in brown.sents():
             phrase = " ".join(sentence).upper()
             if 2 <= len(phrase.split()) <= 5:
                 phrases.append(phrase)
-            if len(phrases) >= 10:
+            if len(phrases) >= 100:
                 break
         return phrases
 
@@ -43,8 +46,7 @@ class HangmanLogic:
             self.hidden_word = random.choice(self.phrase_list)
 
         self.current_display_word = ["_" if c != " " else " " for c in self.hidden_word]
-        self.tries = 6
-        self.score = 0
+        self.tries = 6 if self.level == "basic" else 4
         self.game_over = False
         self.guessed_letters = set()
 
@@ -80,3 +82,10 @@ class HangmanLogic:
                 self.game_over = True
                 return "lose"
             return "wrong"
+        
+    def timeout(self):
+        self.tries -= 1
+        if self.tries <= 0:
+            self.game_over = True
+            return "lose"
+        return "continue"
