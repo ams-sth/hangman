@@ -1,5 +1,6 @@
 import customtkinter as ctk
 
+
 class GameDialog:
     @staticmethod
     def show_result(parent, msg: str, on_new_game):
@@ -7,7 +8,7 @@ class GameDialog:
         dialog.title("Game Over")
         dialog.geometry("300x180")
         dialog.resizable(False, False)
-        dialog.grab_set()  
+        dialog.grab_set()
         dialog.focus()
         dialog.protocol("WM_DELETE_WINDOW", lambda: GameDialog._on_close(dialog, on_new_game))
 

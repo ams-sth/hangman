@@ -1,0 +1,20 @@
+[project]
+name = "hangman"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "customtkinter==5.2.2",
+    "nltk==3.9.2",
+    "pillow==11.3.0",
+]
+
+[dependency-groups]
+dev = [
+    "pyright>=1.1.409",
+]
+
+[tool.pyright]
+venvPath = "."
+venv = ".venv"

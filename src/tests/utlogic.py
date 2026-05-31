@@ -1,5 +1,7 @@
 import unittest
+
 from logic.hlogic import HangmanLogic
+
 
 class TestHangmanLogic(unittest.TestCase):
 

@@ -1,9 +1,10 @@
 import customtkinter as ctk
 from PIL import Image
 
+from gui.dialogs import GameDialog
 from gui.widgets import ThemeToggleButton
 from logic.hlogic import HangmanLogic
-from gui.dialogs import GameDialog
+
 
 class GameScreen(ctk.CTkFrame):
     def __init__(self, master, level, on_new_game, current_theme, on_toggle_theme):
@@ -72,7 +73,7 @@ class GameScreen(ctk.CTkFrame):
             text_color=("green", "#7fff7f")
         )
         self.score_label.grid(row=0, column=3, padx=5)
-        
+
         ThemeToggleButton(
             self,
             current_theme=self.current_theme,
@@ -143,7 +144,7 @@ class GameScreen(ctk.CTkFrame):
             self.time_left -= 1
             self.master.after(1000, self._tick)
         elif not self.game.game_over:
-            result = self.game.timeout()  
+            result = self.game.timeout()
             self.update_display()
             if result == "lose":
                 self._end_game("⏰ Time's up! No tries left!")

@@ -1,5 +1,6 @@
 import customtkinter as ctk
 
+
 class ThemeToggleButton(ctk.CTkButton):
     ICONS = {"dark": "☀️", "light": "🌙", "system": "⚙️"}
     CYCLE = {"dark": "light", "light": "system", "system": "dark"}

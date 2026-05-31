@@ -1,7 +1,7 @@
 import customtkinter as ctk
 
-from gui.menuscreen import MenuScreen
 from gui.gamescreen import GameScreen
+from gui.menuscreen import MenuScreen
 
 ctk.set_appearance_mode("dark")
 ctk.set_default_color_theme("blue")
@@ -14,7 +14,7 @@ class HangmanApp:
         self.master.resizable(True, True)
 
         self.current_screen = None
-        self._theme = "dark" 
+        self._theme = "dark"
         self.show_menu()
 
     def toggle_theme(self):
@@ -33,7 +33,7 @@ class HangmanApp:
             self.master,
             level=level,
             on_new_game=self.show_menu,
-            current_theme=self._theme,        
+            current_theme=self._theme,
             on_toggle_theme=self.toggle_theme
         )
         self.current_screen.pack(expand=True, fill="both")

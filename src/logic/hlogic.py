@@ -33,8 +33,14 @@ class HangmanLogic:
         phrases = []
         for sentence in brown.sents():
             phrase = " ".join(sentence).upper()
+            
+            # ← Only allow letters and spaces, no "(2)" nonsense
+            if not all(c.isalpha() or c == " " for c in phrase):
+                continue
+                
             if 2 <= len(phrase.split()) <= 5:
                 phrases.append(phrase)
+            
             if len(phrases) >= 100:
                 break
         return phrases

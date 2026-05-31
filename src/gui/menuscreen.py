@@ -1,5 +1,7 @@
 import customtkinter as ctk
+
 from gui.widgets import ThemeToggleButton
+
 
 class MenuScreen(ctk.CTkFrame):
     def __init__(self, master, on_start, on_toggle_theme, current_theme):
@@ -36,12 +38,12 @@ class MenuScreen(ctk.CTkFrame):
             font=ctk.CTkFont(size=14, weight="bold"),
             width=250,
             height=40,
-            selected_color="#28a745",       
+            selected_color="#28a745",
             selected_hover_color="#218838",
             unselected_color=("gray80", "gray25"),
             unselected_hover_color=("gray70", "gray35"),
             text_color=("black", "white"),
-            corner_radius=20                 
+            corner_radius=20
         ).pack(pady=10)
 
         ctk.CTkButton(

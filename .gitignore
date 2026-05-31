@@ -4,3 +4,6 @@ env/
 build/
 .vscode/
 tests/
+
+.idea
+.venv
